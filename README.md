@@ -255,7 +255,7 @@ Trong đó:
 .content {
   @include flexCenter();
   // hoặc
-  @include flexCenter; trường hợp mixin không nhận tham số nào
+  @include flexCenter; // trường hợp mixin không nhận tham số nào
 }
 
 .message {
@@ -267,5 +267,32 @@ Trong đó:
 >
 > Các tham số của mixin có thể nhận giá trị mặc định. Để chỉ định giá trị mặc định, ta sẽ sử dụng cú pháp: `param: defaultValue`.
 
+Bên trong mixin có thể sử dụng `@include` để sử dụng một mixin khác.
 
+**Ví dụ**:
+
+```scss
+SCSS SYNTAX
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin horizontal-list {
+  @include reset-list;
+
+  li {
+    display: inline-block;
+    margin: {
+      left: -2px;
+      right: 2em;
+    }
+  }
+}
+
+nav ul {
+  @include horizontal-list;
+}
+```
 
