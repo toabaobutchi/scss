@@ -1,5 +1,9 @@
 # SCSS
 
+> [!Important]
+>
+> Tài liệu chỉ mang tính tham khảo và tổng hợp các trường hợp sử dụng thường gặp. Các trường hợp nâng cao khác hãy tìm tại [trang chủ của SASS](https://sass-lang.com/).
+
 ## Cài đặt
 
 ### # Ứng dụng HTML trong Visual Studio Code
@@ -97,7 +101,7 @@ Biến trong SCSS có thể khai báo toàn cục bên ngoài hoặc cục bộ 
 >
 > Biến trong SCSS không biên dịch thành các biến CSS mà sẽ được biên dịch trực tiếp giá trị vào các vị trí sử dụng biến.
 
-### Cú pháp lồng
+### Cú pháp lồng - Nesting
 
 CSS không có cú pháp lồng nhau và thể hiện quan hệ giữa các selector như HTML. Với SCSS, ta có thể thể hiện điều đó.
 
@@ -138,6 +142,163 @@ nav a {
   display: block;
   padding: 6px 12px;
   text-decoration: none;
+}
+```
+
+#### ## Selector list
+
+Ta có thể dùng dấu phẩy để phân cách các selector có cùng style và có cùng cấu trúc nếu có sử dụng cú pháp lồng.
+
+**Ví dụ:**
+
+- SCSS:
+
+```scss
+.message, .notification {
+  display: flex;
+  align-items: center;
+
+  .content {
+    font-size: 18px;
+  }
+
+  .link {
+    color: #357afa;
+    text-decoration: none;
+  }
+}
+```
+
+- CSS:
+
+```css
+.message, .notification {
+  display: flex;
+  align-items: center;
+}
+
+.message .content, .notification .content {
+  font-size: 18px;
+}
+
+.message .link, .notification .link {
+  color: #357afa;
+  text-decoration: none;
+}
+```
+
+#### ## Selector Combinators
+
+Theo mặc định, cú pháp lồng dùng Descendant selector (`parent child`) để thể hiện quan hệ giữa 2 selector.
+
+**Ví dụ:**
+
+- SCSS:
+
+```scss
+ul {
+  list-style: none;
+
+  li {
+    padding: 10px;
+  }
+}
+```
+
+- CSS:
+
+```css
+ul {
+  list-style: none;
+}
+
+// Descendant selector
+ul li {
+  padding: 10px;
+}
+```
+
+Muốn chỉ định các Compinator khác, hãy đặt các ký hiệu combinator ở cuối selector cha, ở đầu selector con hoặc đặt ở giữa 2 selector. Giữa chúng sẽ có một số điều khác biệt.
+
+- Đặt ở cuối selector cha: áp dụng combinator cho các selector con.
+
+**Ví dụ:**
+
+```scss
+// SCSS
+.message > {
+  .content {
+    color: red;
+  }
+  .link {
+    color: green;
+  }
+}
+
+// CSS
+.message > .content {
+  color: red;
+}
+.message > .link {
+  color: green;
+}
+```
+
+- Đặt ở phía trước selector con: chỉ selector con mới sử dụng combinator chỉ định.
+
+**Ví dụ:**
+
+```scss
+// SCSS
+.message {
+  + .content {
+    color: red;
+  }
+  .link {
+    color: green;
+  }
+}
+
+// CSS
+.message + .content {
+  color: red;
+}
+.message .link {
+  color: green;
+}
+```
+
+- Đặt ở giữa 2 selector: cú pháp này cho phép nhóm các kiểu combinator.
+
+```scss
+// SCSS
+.message {
+  // các selector con sử dụng combinator `~`
+  ~ { 
+    .content {
+      color: red;
+    }
+    .link {
+      color: green;
+    }
+  }
+  // các selector con sử dụng combinator `+`
+  + {
+    .other {
+      color: blue;
+    }
+  }
+}
+
+// CSS
+.message ~ .content {
+  color: red;
+}
+.message ~ .link {
+  color: green;
+}
+.message + .other {
+  color: blue;
 }
 ```
 
