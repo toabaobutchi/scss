@@ -143,7 +143,7 @@ nav a {
 
 ### # Ký hiệu `&`
 
-Trong cú pháp lồng, ta có thể sử dụng ký hiệu `&` để tiếp tục định danh của selector cha. Ký hiệu `&` luôn phải bắt đầu selector.
+Trong cú pháp lồng, ta có thể sử dụng ký hiệu `&` để tái sử dụng tên selector cha. Ký hiệu `&` luôn phải bắt đầu selector.
 
 **Ví dụ:**
 
@@ -174,18 +174,42 @@ Trong cú pháp lồng, ta có thể sử dụng ký hiệu `&` để tiếp t�
 
 - CSS:
 
-```cs
+```css
 .message {
   border: 1px solid #777;
 }
+
 .message-content {
   color: #333;
   font-size: 14px;
 }
+
 .message-link {
   text-decoration: none;
   color: lightblue;
 }
 ```
+
+Ký hiệu `&` cũng có thể sử dụng với các Pseudo class hoặc Pseudo element như `:hover`, `:first-child`, `::before`, ...
+
+**Ví dụ:**
+
+```scss
+.content {
+  position: relative;
+
+  &:hover {
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    // scss ...
+  }
+}
+```
+
 
 
