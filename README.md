@@ -213,7 +213,59 @@ Ký hiệu `&` cũng có thể sử dụng với các Pseudo class hoặc Pseudo
 
 ### Mixin và Extend/Inheritance
 
+Mixin có thể hiểu là một loại cú pháp hàm trong SCSS. Nó cho phép tái sử dụng các style và cũng như có thể nhận tham số để linh hoạt trong việc tạo kiểu.
 
+Cú pháp:
+
+```
+@mixin <mixin-name>(<params>) {
+  // scss ...
+}
+```
+
+Trong đó:
+
+- **`<mixin-name>`** không bắt đầu bằng ký hiệu `$`.
+
+- **`<params>`** là các tham số cho mixin. Các tham số này có thể hiểu là biến cho mixin, cú pháp tương tự biến. Thành phần này có thể không có khi tạo mixin.
+
+**Ví dụ:**
+
+```scss
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin fontStyle($style, $color) {
+  font-style: $style;
+  color: $color;
+}
+```
+
+Để sử dụng mixin, ta sử dụng `@include` theo sau là tên của mixin và các giá trị cho tham số.
+
+```scss
+@include <mixin-name>(<arguments>)
+```
+
+**Ví dụ:**
+
+```scss
+.content {
+  @include flexCenter();
+  // hoặc
+  @include flexCenter; trường hợp mixin không nhận tham số nào
+}
+
+.message {
+  @include fontStyle(italic, #333)
+}
+```
+
+> [!Tip]
+>
+> Các tham số của mixin có thể nhận giá trị mặc định. Để chỉ định giá trị mặc định, ta sẽ sử dụng cú pháp: `param: defaultValue`.
 
 
 
