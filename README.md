@@ -220,7 +220,7 @@ ul li {
 
 Muốn chỉ định các Compinator khác, hãy đặt các ký hiệu combinator ở cuối selector cha, ở đầu selector con hoặc đặt ở giữa 2 selector. Giữa chúng sẽ có một số điều khác biệt.
 
-- Đặt ở cuối selector cha: áp dụng combinator cho các selector con.
+- **Đặt ở cuối selector cha**: áp dụng combinator cho các selector con.
 
 **Ví dụ:**
 
@@ -244,7 +244,7 @@ Muốn chỉ định các Compinator khác, hãy đặt các ký hiệu combinat
 }
 ```
 
-- Đặt ở phía trước selector con: chỉ selector con mới sử dụng combinator chỉ định.
+- **Đặt ở phía trước selector con**: chỉ selector con mới sử dụng combinator chỉ định.
 
 **Ví dụ:**
 
@@ -268,7 +268,7 @@ Muốn chỉ định các Compinator khác, hãy đặt các ký hiệu combinat
 }
 ```
 
-- Đặt ở giữa 2 selector: cú pháp này cho phép nhóm các kiểu combinator.
+- **Đặt ở giữa 2 selector**: cú pháp này cho phép nhóm các kiểu combinator.
 
 ```scss
 // SCSS
@@ -302,9 +302,9 @@ Muốn chỉ định các Compinator khác, hãy đặt các ký hiệu combinat
 }
 ```
 
-### # Ký hiệu `&`
+### # Ký hiệu `&` - Parent selector
 
-Trong cú pháp lồng, ta có thể sử dụng ký hiệu `&` để tái sử dụng tên selector cha. Ký hiệu `&` luôn phải bắt đầu selector.
+Trong cú pháp lồng, ta có thể sử dụng ký hiệu `&` để tái sử dụng tên selector cha.
 
 **Ví dụ:**
 
@@ -433,7 +433,6 @@ Bên trong mixin có thể sử dụng `@include` để sử dụng một mixin 
 **Ví dụ**:
 
 ```scss
-SCSS SYNTAX
 @mixin reset-list {
   margin: 0;
   padding: 0;
@@ -456,4 +455,6 @@ nav ul {
   @include horizontal-list;
 }
 ```
+
+
 
