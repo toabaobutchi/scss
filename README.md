@@ -372,7 +372,7 @@ Ký hiệu `&` cũng có thể sử dụng với các Pseudo class hoặc Pseudo
 }
 ```
 
-### Mixin và Extend/Inheritance
+### # `@mixin` và `@include`
 
 Mixin có thể hiểu là một loại cú pháp hàm trong SCSS. Nó cho phép tái sử dụng các style và cũng như có thể nhận tham số để linh hoạt trong việc tạo kiểu.
 
@@ -456,5 +456,37 @@ nav ul {
 }
 ```
 
+### # `@extend`
+
+Trong SCSS, để có thể tái sử dụng lại style từ một selector khác, không chỉ sử dụng mixin mà ta cũng có thể sử dụng từ khoá `@extend` để thực hiện kế thừa lại style của một selector khác.
+
+**Ví dụ:**
+
+- SCSS:
+
+```scss
+.message {
+  color: green;
+  font-size: 12px;
+}
+
+.content {
+  @extend .message;
+  font-weight: 600;
+}
+```
+
+- CSS:
+
+```css
+.message, .content {
+  color: green;
+  font-size: 12px;
+}
+
+.content {
+  font-weight: 600;
+}
+```
 
 
