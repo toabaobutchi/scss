@@ -489,4 +489,54 @@ Trong SCSS, để có thể tái sử dụng lại style từ một selector kh�
 }
 ```
 
+Nếu muốn tạo một style chỉ có mục đích cho kế thừa (không sử dụng riêng lẻ), thì ta có thể đặt tên cho style và bắt đầu bằng `%`.
+
+**Ví dụ:**
+
+- SCSS:
+
+```scss
+%link {
+  text-decoration: none;
+  color: #3676ff;
+  cursor: pointer;
+}
+
+.button-link {
+  @extend %link;
+  border: 1px solid #777;
+  outline: none;
+  border-radius: 10px;
+}
+
+.text-link {
+  @extend %link;
+  cursor: text;
+}
+```
+
+- CSS:
+
+```css
+.text-link, .button-link {
+  text-decoration: none;
+  color: #3676ff;
+  cursor: pointer;
+}
+
+.button-link {
+  border: 1px solid #777;
+  outline: none;
+  border-radius: 10px;
+}
+
+.text-link {
+  cursor: text;
+}
+```
+
+> [!Warning]
+>
+> SCSS chỉ cho phép kế thừa trên một selector đơn giản và độc lập, ví dụ như `.tab.active` được xem là một selector phức tạp.
+
 
